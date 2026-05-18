@@ -276,8 +276,42 @@ a {
   opacity: 0.5;
 }
 
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--fg);
+  color: var(--bg);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
 body {
   margin: 0;
   font-family: "newshound", sans-serif;
   font-weight: 400;
+}
+
+.signatures {
+  padding-bottom: 4rem;
+
+  @media (max-width: 640px) {
+    padding-bottom: 2rem;
+  }
 }
