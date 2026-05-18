@@ -57,7 +57,7 @@ a {
   letter-spacing: 0.08em;
   color: var(--bg);
   background: var(--fg);
-  padding: 0.35rem 0.85rem;
+  padding: 0.85rem 3.35rem;
   text-decoration: none;
   transition: opacity 0.2s;
   white-space: nowrap;
