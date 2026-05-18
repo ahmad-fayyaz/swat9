@@ -11,6 +11,10 @@ export default function Pledge() {
         </h1>
         <div className="masthead-rule" />
       </div>
+      
+      <div className='prose'>
+        <a href= "https://actionnetwork.org/petitions/demand-swarthmore-drop-all-charges-for-student-protestors">SIGN THE PETITION  </a>
+      </div>
     </Layout>
   )
 }
