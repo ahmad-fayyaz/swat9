@@ -1,16 +1,43 @@
-# React + Vite
+# The Swarthmore #9
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite web page that displays JotForm submission data.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**1. Install dependencies**
+```bash
+npm install
+```
 
-## React Compiler
+**2. Create your `.env` file**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Copy the template and fill in the API key (get it from the team):
+```bash
+cp .env.example .env
+```
 
-## Expanding the ESLint configuration
+**3. Start the dev server**
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The site runs at `http://localhost:5173`.
+
+## Environment variables
+
+| Variable | Description |
+|---|---|
+| `VITE_JOTFORM_API_KEY` | JotForm API key — get this from the project owner |
+
+## Commands
+
+```bash
+npm run dev      # dev server with hot reload
+npm run build    # production build → dist/
+npm run preview  # preview the production build
+npm run lint     # run ESLint
+```
+
+## Node version
+
+Use Node 24 (see `.nvmrc`). If you use nvm: `nvm use`

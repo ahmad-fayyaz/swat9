@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+.app {
+  --fg: rgb(225, 221, 218);
+  --bg: #000;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  position: relative;
+  transition: background 0.2s, color 0.2s;
+}
+
+.app.theme-light {
+  --fg: #000;
+  --bg: rgb(225, 221, 218);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
 .masthead-wrap {
   width: fit-content;
   margin: 0 auto;
@@ -20,7 +60,7 @@
   font-style: normal;
   text-align: center;
   margin: 0;
-  color: white;
+  color: var(--fg);
   font-size: 10rem;
 
   @media (max-width: 1024px) {
@@ -36,15 +76,106 @@
   width: 100%;
   border: none;
   margin: 0.1rem 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 0 0 rgba(255, 255, 255, 0.88);
+  border-top: 1px solid color-mix(in srgb, var(--fg) 50%, transparent);
+  box-shadow: 0 4px 0 0 color-mix(in srgb, var(--fg) 88%, transparent);
   filter: url(#newsprint-grain);
+}
+
+.jf-root {
+  padding: 2rem;
+
+  @media (max-width: 640px) {
+    padding: 1rem;
+  }
+}
+
+.jf-form-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.jf-form-btn {
+  font-family: "newshound", sans-serif;
+  font-size: 0.9rem;
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
+  color: var(--fg);
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.2s, background 0.2s;
+
+  &.active,
+  &:hover {
+    border-color: var(--fg);
+    background: color-mix(in srgb, var(--fg) 8%, transparent);
+  }
+}
+
+.jf-count {
+  font-size: 0.75rem;
+  opacity: 0.55;
+}
+
+.jf-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.jf-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "newshound", sans-serif;
+  font-size: 0.9rem;
+
+  th, td {
+    text-align: left;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
+    white-space: nowrap;
+  }
+
+  th {
+    font-weight: 700;
+    opacity: 0.6;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 0.8rem;
+
+    th, td {
+      padding: 0.5rem 0.6rem;
+    }
+  }
+}
+
+.jf-loading,
+.jf-empty,
+.jf-error {
+  font-family: "newshound", sans-serif;
+  padding: 2rem;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.jf-error {
+  color: #e05;
+  opacity: 1;
 }
 
 body {
   margin: 0;
-  background: #1a1a1a;
-  min-height: 100vh;
   font-family: "newshound", sans-serif;
   font-weight: 400;
 }
