@@ -27,9 +27,6 @@ function SunIcon() {
 
 const NAV_LINKS = [
   { to: '/pledge', label: 'Pledge' },
-  { to: '/action', label: 'Action' },
-  { to: '/press', label: 'Press' },
-  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Layout({ children }) {

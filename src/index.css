@@ -2,7 +2,7 @@
 
 .app {
   --fg: rgb(225, 221, 218);
-  --bg: #000;
+  --bg: #3c0008;
   min-height: 100vh;
   background: var(--bg);
   color: var(--fg);
