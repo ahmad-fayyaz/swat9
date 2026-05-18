@@ -26,7 +26,6 @@ function SunIcon() {
 }
 
 const NAV_LINKS = [
-  { to: '/', label: 'Home' },
   { to: '/pledge', label: 'Pledge' },
   { to: '/action', label: 'Action' },
   { to: '/press', label: 'Press' },
@@ -34,7 +33,7 @@ const NAV_LINKS = [
 ]
 
 export default function Layout({ children }) {
-  const [dark, setDark] = useState(true)
+  const [dark, setDark] = useState(false)
 
   return (
     <div className={`app ${dark ? 'theme-dark' : 'theme-light'}`}>
@@ -60,7 +59,7 @@ export default function Layout({ children }) {
           <NavLink
             key={to}
             to={to}
-            end={to === '/'}
+            end
             className={({ isActive }) => isActive ? 'nav-link nav-link--active' : 'nav-link'}
           >
             {label}

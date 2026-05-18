@@ -19,6 +19,10 @@ a {
   text-decoration: underline;
 }
 
+.prose a {
+  font-weight: 700;
+}
+
 .site-header {
   display: flex;
   align-items: center;
