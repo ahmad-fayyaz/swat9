@@ -59,8 +59,8 @@ a{
 }
 
 .masthead {
-  font-family: "newshound-headline", sans-serif;
-  font-weight: 300;
+  font-family: "newshound-banner", sans-serif;
+  font-weight: 700;
   font-style: normal;
   text-align: center;
   margin: 0;
@@ -78,7 +78,7 @@ a{
 
 .subheading {
   font-family: "newshound-subhead", sans-serif;
-  font-weight: 600;
+  font-weight: 100;
   font-style: normal;
   text-align: center;
   margin: 0.5rem 0 0;
@@ -93,6 +93,13 @@ a{
   @media (max-width: 640px) {
     font-size: 3.5rem;
   }
+}
+
+.masthead-sub {
+  display: block;
+  font-family: "newshound-headline", sans-serif;
+  font-weight: 200;
+  font-style: normal;
 }
 
 .masthead-rule {
