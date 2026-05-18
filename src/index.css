@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+.masthead-wrap {
+  width: fit-content;
+  margin: 0 auto;
+  padding-top: 2rem;
+
+  @media (max-width: 1024px) {
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    padding-top: 1rem;
+  }
+}
+
+.masthead {
+  font-family: "newshound-headline", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  text-align: center;
+  margin: 0;
+  color: white;
+  font-size: 10rem;
+
+  @media (max-width: 1024px) {
+    font-size: 6rem;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 3.5rem;
+  }
+}
+
+.masthead-rule {
+  width: 100%;
+  border: none;
+  margin: 0.1rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 0 0 rgba(255, 255, 255, 0.88);
+  filter: url(#newsprint-grain);
+}
+
+body {
+  margin: 0;
+  background: #1a1a1a;
+  min-height: 100vh;
+  font-family: "newshound", sans-serif;
+  font-weight: 400;
+}
