@@ -1,10 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './Layout'
 import JotFormData from './JotFormData'
-import Action from './pages/Action'
-import Cisco from './pages/Cisco'
-import Contact from './pages/Contact'
-import Press from './pages/Press'
 
 function Pledge() {
   return (
@@ -33,12 +29,8 @@ function Pledge() {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/pledge" replace />} />
       <Route path="/pledge" element={<Pledge />} />
-      <Route path="/action" element={<Action />} />
-      <Route path="/cisco" element={<Cisco />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/press" element={<Press />} />
+      <Route path="*" element={<Navigate to="/pledge" replace />} />
     </Routes>
   )
 }
