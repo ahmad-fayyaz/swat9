@@ -65,7 +65,7 @@ a{
   text-align: center;
   margin: 0;
   color: var(--fg);
-  font-size: 10rem;
+  font-size: 4rem;
 
   @media (max-width: 1024px) {
     font-size: 2rem;
@@ -114,97 +114,87 @@ a{
   filter: url(#newsprint-grain);
 }
 
-.jf-root {
-  padding: 2rem;
+.signatures {
+  max-width: 720px;
+  margin: 2.5rem auto 3rem;
+  padding: 0 2rem;
 
   @media (max-width: 640px) {
-    padding: 1rem;
+    padding: 0 1rem;
+    margin-top: 1.5rem;
   }
 }
 
-.jf-form-picker {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.jf-form-btn {
-  font-family: "newshound", sans-serif;
-  font-size: 0.9rem;
-  background: none;
-  border: 1px solid color-mix(in srgb, var(--fg) 30%, transparent);
-  color: var(--fg);
-  padding: 0.4rem 0.85rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: border-color 0.2s, background 0.2s;
-
-  &.active,
-  &:hover {
-    border-color: var(--fg);
-    background: color-mix(in srgb, var(--fg) 8%, transparent);
-  }
-}
-
-.jf-count {
+.sig-heading {
+  font-family: "newshound-subhead", sans-serif;
+  font-weight: 600;
   font-size: 0.75rem;
-  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg);
+  opacity: 0.5;
+  margin: 0 0 1rem;
 }
 
-.jf-table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+.sig-count {
+  font-weight: 400;
 }
 
-.jf-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "newshound", sans-serif;
-  font-size: 0.9rem;
-
-  th, td {
-    text-align: left;
-    padding: 0.6rem 1rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
-    white-space: nowrap;
-  }
-
-  th {
-    font-weight: 700;
-    opacity: 0.6;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  tr:last-child td {
-    border-bottom: none;
-  }
+.sig-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 2rem;
+  counter-reset: sig-counter;
 
   @media (max-width: 640px) {
-    font-size: 0.8rem;
-
-    th, td {
-      padding: 0.5rem 0.6rem;
-    }
+    columns: 1;
   }
 }
 
-.jf-loading,
-.jf-empty,
-.jf-error {
+.sig-item {
   font-family: "newshound", sans-serif;
-  padding: 2rem;
-  opacity: 0.5;
-  text-align: center;
+  break-inside: avoid;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.1rem 0;
+  counter-increment: sig-counter;
+
+  &::before {
+    content: counter(sig-counter) ".";
+    font-family: "newshound", sans-serif;
+    font-size: 0.75rem;
+    opacity: 0.4;
+    padding-top: 0.15rem;
+    grid-row: 1;
+  }
 }
 
-.jf-error {
-  color: #e05;
-  opacity: 1;
+.sig-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--fg);
+  grid-column: 2;
+}
+
+.sig-meta {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--fg);
+  opacity: 0.6;
+  grid-column: 2;
+}
+
+.sig-status {
+  font-family: "newshound", sans-serif;
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  opacity: 0.5;
 }
 
 body {

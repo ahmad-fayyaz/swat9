@@ -1,7 +1,6 @@
 import Layout from '../Layout'
-import "../index.css"
 
-export default function Pledge() {
+export default function Action() {
   return (
     <Layout>
       <div className="masthead-wrap">

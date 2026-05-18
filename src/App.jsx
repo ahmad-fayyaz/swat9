@@ -12,7 +12,7 @@ function Home() {
     <Layout>
       <div className="masthead-wrap">
         <h1 className="masthead">
-          In Defense of Swat 9:
+          In Defense of the Swat 9:
           <span className="masthead-sub">CALL FOR AN ACADEMIC BOYCOTT OF SWARTHMORE COLLEGE</span>
         </h1>
         <div className="masthead-rule" />

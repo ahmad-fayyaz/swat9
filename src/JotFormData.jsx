@@ -4,74 +4,80 @@ const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
 const BASE = 'https://api.jotform.com'
 
 function formatAnswer(value) {
-  if (value === null || value === undefined) return '—'
-  if (typeof value !== 'object') return String(value)
-  // Name field: {first, last}
+  if (value === null || value === undefined) return ''
+  if (typeof value !== 'object') return String(value).trim()
   if ('first' in value || 'last' in value)
     return [value.first, value.last].filter(Boolean).join(' ')
-  // Address, date, or any other compound field
   return Object.values(value).filter(Boolean).join(', ')
 }
 
-function FormSubmissions({ formId }) {
-  const [submissions, setSubmissions] = useState([])
-  const [fields, setFields] = useState([])
+function Signatures({ formId }) {
+  const [signatures, setSignatures] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function load() {
-      const [subRes, qRes] = await Promise.all([
-        fetch(`${BASE}/form/${formId}/submissions?apiKey=${API_KEY}&limit=50&orderby=created_at`),
-        fetch(`${BASE}/form/${formId}/questions?apiKey=${API_KEY}`),
-      ])
-      const subJson = await subRes.json()
-      const qJson = await qRes.json()
+      try {
+        const [subRes, qRes] = await Promise.all([
+          fetch(`${BASE}/form/${formId}/submissions?apiKey=${API_KEY}&limit=1000&orderby=created_at`),
+          fetch(`${BASE}/form/${formId}/questions?apiKey=${API_KEY}`),
+        ])
+        const subJson = await subRes.json()
+        const qJson = await qRes.json()
 
-      const questions = Object.values(qJson.content || {})
-        .filter(q => q.type !== 'control_head' && q.type !== 'control_button')
-        .sort((a, b) => a.order - b.order)
+        const questions = Object.values(qJson.content || {})
 
-      setFields(questions)
-      setSubmissions(subJson.content || [])
-      setLoading(false)
+        const EXCLUDE_TYPES = ['control_head', 'control_text', 'control_button']
+        const find = (keywords) => questions.find(q =>
+          !EXCLUDE_TYPES.includes(q.type) &&
+          keywords.some(k => (q.text || q.name || '').toLowerCase().includes(k))
+        )
+
+        const nameQ = questions.find(q => q.type === 'control_fullname') || find(['full name', 'name'])
+        const positionQ = find(['position', 'affiliation', 'occupation', 'title'])
+        const orgQ = find(['institution', 'organization'])
+
+        const subs = (subJson.content || []).map(sub => ({
+          id: sub.id,
+          name: nameQ ? formatAnswer(sub.answers?.[nameQ.qid]?.answer) : '',
+          position: positionQ ? formatAnswer(sub.answers?.[positionQ.qid]?.answer) : '',
+          org: orgQ ? formatAnswer(sub.answers?.[orgQ.qid]?.answer) : '',
+        })).filter(s => s.name)
+
+        setSignatures(subs)
+      } catch {
+        // silently fail — show empty state
+      } finally {
+        setLoading(false)
+      }
     }
     load()
   }, [formId])
 
-  if (loading) return <p className="jf-loading">Loading submissions…</p>
-  if (!submissions.length) return <p className="jf-empty">No submissions yet.</p>
+  if (loading) return <p className="sig-status">Loading signatures…</p>
+  if (!signatures.length) return <p className="sig-status">No signatures yet.</p>
 
   return (
-    <div className="jf-table-wrap">
-      <table className="jf-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Date</th>
-            {fields.map(f => <th key={f.qid}>{f.text || f.name}</th>)}
-          </tr>
-        </thead>
-        <tbody>
-          {submissions.map((sub, i) => (
-            <tr key={sub.id}>
-              <td>{i + 1}</td>
-              <td>{new Date(sub.created_at).toLocaleDateString()}</td>
-              {fields.map(f => (
-                <td key={f.qid}>
-                  {formatAnswer(sub.answers?.[f.qid]?.answer)}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="signatures">
+      <h2 className="sig-heading">Signatories <span className="sig-count">({signatures.length})</span></h2>
+      <ol className="sig-list">
+        {signatures.map(s => (
+          <li key={s.id} className="sig-item">
+            <span className="sig-name">{s.name}</span>
+            {(s.position || s.org) && (
+              <span className="sig-meta">
+                {[s.position, s.org].filter(Boolean).join(', ')}
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
     </div>
   )
 }
 
 export default function JotFormData() {
-  const [forms, setForms] = useState([])
-  const [selected, setSelected] = useState(null)
+  const [formId, setFormId] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -80,37 +86,16 @@ export default function JotFormData() {
       .then(r => r.json())
       .then(json => {
         if (json.responseCode !== 200) throw new Error(json.message)
-        const list = json.content || []
-        setForms(list)
-        if (list.length === 1) setSelected(list[0].id)
+        const forms = json.content || []
+        if (forms.length) setFormId(forms[0].id)
       })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading) return <p className="jf-loading">Connecting to JotForm…</p>
-  if (error) return <p className="jf-error">JotForm error: {error}</p>
+  if (loading) return null
+  if (error) return <p className="sig-status">Error: {error}</p>
+  if (!formId) return null
 
-  return (
-    <div className="jf-root">
-      {forms.length > 1 && (
-        <div className="jf-form-picker">
-          {forms.map(f => (
-            <button
-              key={f.id}
-              className={`jf-form-btn ${selected === f.id ? 'active' : ''}`}
-              onClick={() => setSelected(f.id)}
-            >
-              {f.title}
-              <span className="jf-count">{f.count}</span>
-            </button>
-          ))}
-        </div>
-      )}
-      {selected && <FormSubmissions formId={selected} />}
-      {!selected && forms.length > 1 && (
-        <p className="jf-empty">Select a form above to view submissions.</p>
-      )}
-    </div>
-  )
+  return <Signatures formId={formId} />
 }
