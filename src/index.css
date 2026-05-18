@@ -31,16 +31,46 @@ a {
   padding: 0.75rem 1.5rem;
 
   @media (max-width: 640px) {
-    padding: 0.6rem 1rem;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
   }
 }
 
-.site-header .theme-toggle {
+.header-actions {
   position: absolute;
   right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 
   @media (max-width: 640px) {
-    right: 1rem;
+    position: static;
+    gap: 0.5rem;
+  }
+}
+
+.header-sign-btn {
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--fg);
+  padding: 0.35rem 0.85rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.5rem;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -53,7 +83,7 @@ a {
   letter-spacing: 0.02em;
 
   @media (max-width: 640px) {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -274,6 +304,85 @@ a {
   margin: 2rem auto;
   padding: 0 2rem;
   opacity: 0.5;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 3rem;
+  pointer-events: none;
+
+  @media (max-width: 640px) {
+    padding-bottom: 1.5rem;
+  }
+}
+
+.popup {
+  pointer-events: all;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  max-width: 360px;
+  width: calc(100% - 2rem);
+  position: relative;
+
+  @media (max-width: 640px) {
+    padding: 1.25rem 1.25rem;
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  opacity: 0.5;
+  font-size: 0.85rem;
+  line-height: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.popup-text {
+  font-family: "newshound-headline", sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: var(--fg);
+  margin: 0 0 1.25rem;
+
+  @media (max-width: 640px) {
+    font-size: 1.1rem;
+  }
+}
+
+.popup-btn {
+  display: inline-block;
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--bg);
+  background: var(--fg);
+  padding: 0.6rem 1.5rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.85;
+    text-decoration: none;
+  }
 }
 
 .scroll-top {

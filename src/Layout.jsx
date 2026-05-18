@@ -29,14 +29,46 @@ const NAV_LINKS = [
   { to: '/pledge', label: 'Pledge' },
 ]
 
+const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
+
 export default function Layout({ children }) {
   const [dark, setDark] = useState(false)
   const [showTop, setShowTop] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
+  const [formUrl, setFormUrl] = useState('https://form.jotform.com')
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 300)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const handleClick = (e) => {
+      const link = e.target.closest('a')
+      if (!link) return
+      const href = link.getAttribute('href')
+      if (!href || !href.startsWith('http') || href.startsWith(window.location.origin)) return
+      e.preventDefault()
+      window.open(href, '_blank', 'noopener,noreferrer')
+    }
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowPopup(true), 7000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    fetch(`https://api.jotform.com/user/forms?apiKey=${API_KEY}&limit=1&orderby=updated_at`)
+      .then(r => r.json())
+      .then(json => {
+        const id = json.content?.[0]?.id
+        if (id) setFormUrl(`https://form.jotform.com/${id}`)
+      })
+      .catch(() => {})
   }, [])
 
   return (
@@ -52,9 +84,19 @@ export default function Layout({ children }) {
 
       <header className="site-header">
         <span className="site-name">The Swat IX</span>
-        <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label="Toggle theme">
-          {dark ? <MoonIcon /> : <SunIcon />}
-        </button>
+        <div className="header-actions">
+          <a
+            className="header-sign-btn"
+            href={formUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Sign the Pledge
+          </a>
+          <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label="Toggle theme">
+            {dark ? <MoonIcon /> : <SunIcon />}
+          </button>
+        </div>
       </header>
 
       <div className="nav-rule" />
@@ -73,6 +115,24 @@ export default function Layout({ children }) {
       <div className="nav-rule" />
 
       {children}
+
+      {showPopup && (
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div className="popup" onClick={e => e.stopPropagation()}>
+            <button className="popup-close" onClick={() => setShowPopup(false)} aria-label="Close">✕</button>
+            <p className="popup-text">Add your name to the list:</p>
+            <a
+              className="popup-btn"
+              href={formUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setShowPopup(false)}
+            >
+              Sign the Pledge
+            </a>
+          </div>
+        </div>
+      )}
 
       {showTop && (
         <button
