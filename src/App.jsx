@@ -1,5 +1,11 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import JotFormData from './JotFormData'
+import Action from './pages/Action'
+import Cisco from './pages/Cisco'
+import Contact from './pages/Contact'
+import Pledge from './pages/Pledge'
+import Press from './pages/Press'
 
 function MoonIcon() {
   return (
@@ -25,7 +31,7 @@ function SunIcon() {
   )
 }
 
-function App() {
+function Home() {
   const [dark, setDark] = useState(true)
 
   return (
@@ -58,6 +64,19 @@ This pledge is not a condemnation of Swarthmore's faculty, students, or staff, m
       </div>
       <JotFormData />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/action" element={<Action />} />
+      <Route path="/cisco" element={<Cisco />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/pledge" element={<Pledge />} />
+      <Route path="/press" element={<Press />} />
+    </Routes>
   )
 }
 
