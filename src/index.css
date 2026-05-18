@@ -69,7 +69,7 @@ a {
 
   @media (max-width: 640px) {
     font-size: 0.6rem;
-    padding: 0.3rem 0.5rem;
+    padding: 0.5rem 0.7rem;
     letter-spacing: 0.04em;
   }
 }
