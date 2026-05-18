@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 function MoonIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   )
@@ -10,7 +11,7 @@ function MoonIcon() {
 
 function SunIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -23,6 +24,14 @@ function SunIcon() {
     </svg>
   )
 }
+
+const NAV_LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/pledge', label: 'Pledge' },
+  { to: '/action', label: 'Action' },
+  { to: '/press', label: 'Press' },
+  { to: '/contact', label: 'Contact' },
+]
 
 export default function Layout({ children }) {
   const [dark, setDark] = useState(true)
@@ -37,9 +46,29 @@ export default function Layout({ children }) {
           </filter>
         </defs>
       </svg>
-      <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label="Toggle theme">
-        {dark ? <MoonIcon /> : <SunIcon />}
-      </button>
+
+      <header className="site-header">
+        <span className="site-name">The Swat IX</span>
+        <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label="Toggle theme">
+          {dark ? <MoonIcon /> : <SunIcon />}
+        </button>
+      </header>
+
+      <div className="nav-rule" />
+      <nav className="site-nav">
+        {NAV_LINKS.map(({ to, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to === '/'}
+            className={({ isActive }) => isActive ? 'nav-link nav-link--active' : 'nav-link'}
+          >
+            {label}
+          </NavLink>
+        ))}
+      </nav>
+      <div className="nav-rule" />
+
       {children}
     </div>
   )
