@@ -68,11 +68,11 @@ a{
   font-size: 10rem;
 
   @media (max-width: 1024px) {
-    font-size: 6rem;
+    font-size: 2rem;
   }
 
   @media (max-width: 640px) {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
   }
 }
 
