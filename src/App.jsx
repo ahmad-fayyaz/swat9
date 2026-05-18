@@ -42,8 +42,9 @@ function App() {
         {dark ? <MoonIcon /> : <SunIcon />}
       </button>
       <div className="masthead-wrap">
-        <h1 className="masthead">The Swarthmore #9</h1>
+        <h1 className="masthead">The Swarthmore Nine</h1>
         <div className="masthead-rule" />
+        <p className="subheading">The independent student newspaper of Swarthmore College</p>
       </div>
       <JotFormData />
     </div>
