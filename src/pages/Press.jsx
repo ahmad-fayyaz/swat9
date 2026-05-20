@@ -64,7 +64,7 @@ const PRESS = [
       {
         label: 'Letter of Support for Swarthmore Pro-Palestinian Protesters',
         author: 'Rev. Jim Colvin \'71',
-        url: 'https://www.youtube.com/live/eAPF_Q12mZE?si=rd_LwKEH1JyVK_ri',
+        url: 'https://swarthmorevoices.com/content-1/2026/4/16/ibu4ua399q42rikwjqufb37ygzko6q',
       },
     ],
   },
