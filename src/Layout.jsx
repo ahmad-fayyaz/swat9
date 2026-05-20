@@ -26,14 +26,46 @@ function SunIcon() {
 }
 
 const NAV_LINKS = [
-  { to: '/', label: 'Home' },
+  { to: '/', label: 'Home', hidden: true },
   { to: '/pledge', label: 'Pledge' },
-  { to: '/court-support', label: 'Court Support' },
-  { to: '/press', label: 'Press' },
-  { to: '/cisco', label: 'Cisco' },
+  { to: '/court-support', label: 'Court Support', hidden: true },
+  { to: '/press', label: 'Press', hidden: true },
+  { to: '/cisco', label: 'Cisco', hidden: true },
 ]
 
 const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
+
+function MailingListForm() {
+  const [email, setEmail] = useState('')
+  const [done, setDone] = useState(false)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    if (!email) return
+    const body = new URLSearchParams({ 'form-name': 'mailing-list', email })
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body })
+      .then(() => setDone(true))
+      .catch(() => setDone(true))
+  }
+
+  if (done) return <span className="footer-mailing-done">You're on the list.</span>
+
+  return (
+    <form className="footer-mailing-form" onSubmit={handleSubmit} netlify="true" name="mailing-list" data-netlify="true">
+      <input type="hidden" name="form-name" value="mailing-list" />
+      <input
+        className="footer-mailing-input"
+        type="email"
+        name="email"
+        placeholder="your@email.com"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        required
+      />
+      <button className="footer-mailing-btn" type="submit">Join Mailing List</button>
+    </form>
+  )
+}
 
 export default function Layout({ children, showPopup: enablePopup = false, dark, setDark }) {
   const [showTop, setShowTop] = useState(false)
@@ -105,7 +137,7 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
 
       <div className="nav-rule" />
       <nav className="site-nav">
-        {NAV_LINKS.map(({ to, label }) => (
+        {NAV_LINKS.filter(l => !l.hidden).map(({ to, label }) => (
           <NavLink
             key={to}
             to={to}
@@ -142,7 +174,7 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
         <a className="footer-email" href="mailto:mailinglist@swarthmore9.com">mailinglist@swarthmore9.com</a>
         <div className="footer-actions">
           <a className="footer-petition" href="https://actionnetwork.org/petitions/demand-swarthmore-drop-all-charges-for-student-protestors" target="_blank" rel="noopener noreferrer">Sign the Petition</a>
-          <a className="footer-mailing" href="mailto:mailinglist@swarthmore9.com">Join Mailing List</a>
+          <MailingListForm />
         </div>
       </footer>
 
