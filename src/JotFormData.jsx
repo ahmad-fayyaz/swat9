@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
 
-const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
-const BASE = 'https://api.jotform.com'
-
 const SEED_SIGNATURES = [
   { name: 'Aida Kasieva', position: 'Professor', org: 'Kyrgyz-Turkish Manas University' },
   { name: 'Alice Wujciak', position: 'Adjunct Professor', org: 'Broward College' },
@@ -129,69 +126,21 @@ const SEED_NAMES = new Set(SEED_SIGNATURES.map(s => s.name.trim().toLowerCase())
 
 const BLACKLIST = new Set(['robin kelcy'])
 
-
-function isEncrypted(str) {
-  if (typeof str !== 'string') return false
-  // name fields join first+last with a space, so check each word individually
-  return str.split(/\s+/).some(word => word.length > 15 && /^[A-Za-z0-9+/]+=*$/.test(word))
-}
-
-function formatAnswer(value) {
-  if (value === null || value === undefined) return ''
-  if (typeof value !== 'object') return String(value).trim()
-  if ('first' in value || 'last' in value)
-    return [value.first, value.last].filter(Boolean).join(' ').trim()
-  return Object.values(value).filter(Boolean).join(', ').trim()
-}
-
-function Signatures({ formId }) {
+export default function JotFormData() {
   const [liveSignatures, setLiveSignatures] = useState([])
 
   useEffect(() => {
-    async function load() {
-      try {
-        const [subRes, qRes] = await Promise.all([
-          fetch(`${BASE}/form/${formId}/submissions?apiKey=${API_KEY}&limit=1000&orderby=created_at`),
-          fetch(`${BASE}/form/${formId}/questions?apiKey=${API_KEY}`),
-        ])
-        const subJson = await subRes.json()
-        const qJson = await qRes.json()
-
-        const questions = Object.values(qJson.content || {})
-        const EXCLUDE_TYPES = ['control_head', 'control_text', 'control_button']
-        const find = (keywords) => questions.find(q =>
-          !EXCLUDE_TYPES.includes(q.type) &&
-          keywords.some(k => (q.text || q.name || '').toLowerCase().includes(k))
+    fetch('/.netlify/functions/signatures')
+      .then(r => r.json())
+      .then(json => {
+        const live = (json.signatures || []).filter(s =>
+          !SEED_NAMES.has(s.name.trim().toLowerCase()) &&
+          !BLACKLIST.has(s.name.trim().toLowerCase())
         )
-
-        const nameQ = questions.find(q => q.type === 'control_fullname') || find(['full name', 'name'])
-        const positionQ = find(['position', 'affiliation', 'occupation', 'title'])
-        const orgQ = find(['institution', 'organization'])
-
-        const live = (subJson.content || [])
-          .filter(sub => sub.status !== 'DELETED')
-          .map(sub => ({
-            id: sub.id,
-            name: nameQ ? formatAnswer(sub.answers?.[nameQ.qid]?.answer) : '',
-            position: positionQ ? formatAnswer(sub.answers?.[positionQ.qid]?.answer) : '',
-            org: orgQ ? formatAnswer(sub.answers?.[orgQ.qid]?.answer) : '',
-          }))
-          .filter(s =>
-            s.name &&
-            !isEncrypted(s.name) &&
-            !isEncrypted(s.position) &&
-            !isEncrypted(s.org) &&
-            !SEED_NAMES.has(s.name.trim().toLowerCase()) &&
-            !BLACKLIST.has(s.name.trim().toLowerCase())
-          )
-
         setLiveSignatures(live)
-      } catch {
-        // silently fail — seed data still shows
-      }
-    }
-    load()
-  }, [formId])
+      })
+      .catch(() => {})
+  }, [])
 
   const lastName = name => name.trim().split(/\s+/).at(-1).toLowerCase()
   const all = [...SEED_SIGNATURES, ...liveSignatures]
@@ -214,21 +163,4 @@ function Signatures({ formId }) {
       </ol>
     </div>
   )
-}
-
-export default function JotFormData() {
-  const [formId, setFormId] = useState(null)
-
-  useEffect(() => {
-    fetch(`${BASE}/user/forms?apiKey=${API_KEY}&limit=20&orderby=updated_at`)
-      .then(r => r.json())
-      .then(json => {
-        if (json.responseCode !== 200) throw new Error(json.message)
-        const forms = json.content || []
-        if (forms.length) setFormId(forms[0].id)
-      })
-      .catch(() => {})
-  }, [])
-
-  return <Signatures formId={formId} />
 }
