@@ -23,6 +23,41 @@ a {
   font-weight: 700;
 }
 
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  margin-top: 4rem;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+}
+
+.footer-email,
+.footer-mailing {
+  color: var(--fg);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer-mailing {
+  border: 1px solid color-mix(in srgb, var(--fg) 40%, transparent);
+  padding: 0.3rem 0.75rem;
+}
+
 .site-header {
   display: flex;
   align-items: center;

@@ -138,6 +138,11 @@ export default function Layout({ children }) {
         </div>
       )}
 
+      <footer className="site-footer">
+        <a className="footer-email" href="mailto:mailinglist@swarthmore9.com">mailinglist@swarthmore9.com</a>
+        <a className="footer-mailing" href="mailto:mailinglist@swarthmore9.com">Join Mailing List</a>
+      </footer>
+
       {showTop && (
         <button
           className="scroll-top"
