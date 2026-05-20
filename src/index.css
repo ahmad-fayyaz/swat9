@@ -4,6 +4,8 @@
   --fg: rgb(225, 221, 218);
   --bg: #3c0008;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   color: var(--fg);
   position: relative;
@@ -28,7 +30,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  margin-top: 4rem;
+  margin-top: auto;
   border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
   font-size: 0.75rem;
   letter-spacing: 0.05em;

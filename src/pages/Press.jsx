@@ -1,8 +1,8 @@
 import Layout from '../Layout'
 
-export default function Press() {
+export default function Press({ dark, setDark }) {
   return (
-    <Layout>
+    <Layout dark={dark} setDark={setDark}>
       <div className="masthead-wrap">
         <h1 className="masthead">
           Press

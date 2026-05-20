@@ -8,7 +8,7 @@ const DATES = [
   { value: 'july-2',  label: 'July 2' },
 ]
 
-export default function Action() {
+export default function Action({ dark, setDark }) {
   const [selected, setSelected] = useState([])
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -35,7 +35,7 @@ export default function Action() {
   }
 
   return (
-    <Layout>
+    <Layout dark={dark} setDark={setDark}>
       <div className="masthead-wrap">
         <h1 className="masthead">
           Court Support

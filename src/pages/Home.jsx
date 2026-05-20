@@ -1,8 +1,8 @@
 import Layout from '../Layout'
 
-export default function Home() {
+export default function Home({ dark, setDark }) {
   return (
-    <Layout>
+    <Layout dark={dark} setDark={setDark}>
       <div className="masthead-wrap">
         <h1 className="masthead">
           The Swat IX

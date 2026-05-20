@@ -35,8 +35,7 @@ const NAV_LINKS = [
 
 const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
 
-export default function Layout({ children, showPopup: enablePopup = false }) {
-  const [dark, setDark] = useState(false)
+export default function Layout({ children, showPopup: enablePopup = false, dark, setDark }) {
   const [showTop, setShowTop] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
   const [formUrl, setFormUrl] = useState('https://form.jotform.com/261336169617058')
