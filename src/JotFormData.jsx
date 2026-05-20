@@ -129,6 +129,7 @@ const SEED_NAMES = new Set(SEED_SIGNATURES.map(s => s.name.trim().toLowerCase())
 
 const BLACKLIST = new Set(['robin kelcy'])
 
+
 function isEncrypted(str) {
   if (typeof str !== 'string') return false
   // name fields join first+last with a space, so check each word individually
@@ -168,6 +169,7 @@ function Signatures({ formId }) {
         const orgQ = find(['institution', 'organization'])
 
         const live = (subJson.content || [])
+          .filter(sub => sub.status !== 'DELETED')
           .map(sub => ({
             id: sub.id,
             name: nameQ ? formatAnswer(sub.answers?.[nameQ.qid]?.answer) : '',
