@@ -160,7 +160,7 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
       )}
 
       <footer className="site-footer">
-        <a className="footer-email" href="mailto:mailinglist@swarthmore9.com">mailinglist@swarthmore9.com</a>
+        <a className="footer-email" href="mailto:contactus@swarthmore9.com">contactus@swarthmore9.com</a>
         <div className="footer-actions">
           <a className="footer-petition" href="https://actionnetwork.org/petitions/demand-swarthmore-drop-all-charges-for-student-protestors" target="_blank" rel="noopener noreferrer">Sign the Petition</a>
           <MailingListForm />
