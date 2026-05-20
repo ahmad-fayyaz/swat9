@@ -44,6 +44,33 @@ a {
   }
 }
 
+.footer-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+}
+
+.footer-petition {
+  font-family: "newshound", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  background: var(--fg);
+  text-decoration: none;
+  padding: 0.3rem 0.75rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 .footer-email,
 .footer-mailing {
   color: var(--fg);
@@ -446,6 +473,94 @@ a {
     bottom: 1rem;
     right: 1rem;
   }
+}
+
+.press-list {
+  max-width: 720px;
+  margin: 2rem auto 3rem;
+  padding: 0 2rem;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.press-section {
+  margin-bottom: 2.5rem;
+}
+
+.press-category {
+  font-family: "newshound-subhead", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  margin: 0 0 0.75rem;
+}
+
+.press-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.press-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+.press-link {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  color: var(--fg);
+  text-decoration: none;
+
+  &:hover .press-title {
+    text-decoration: underline;
+  }
+}
+
+.press-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0.9;
+
+  @media (max-width: 640px) {
+    width: 90px;
+    height: 60px;
+  }
+}
+
+.press-thumb--empty {
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.press-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.press-title {
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  @media (max-width: 640px) {
+    font-size: 0.85rem;
+  }
+}
+
+.press-outlet {
+  font-family: "newshound", sans-serif;
+  font-size: 0.75rem;
+  opacity: 0.5;
 }
 
 .court-form,

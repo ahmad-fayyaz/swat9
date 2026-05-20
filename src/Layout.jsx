@@ -140,7 +140,10 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
 
       <footer className="site-footer">
         <a className="footer-email" href="mailto:mailinglist@swarthmore9.com">mailinglist@swarthmore9.com</a>
-        <a className="footer-mailing" href="mailto:mailinglist@swarthmore9.com">Join Mailing List</a>
+        <div className="footer-actions">
+          <a className="footer-petition" href="https://actionnetwork.org/petitions/demand-swarthmore-drop-all-charges-for-student-protestors" target="_blank" rel="noopener noreferrer">Sign the Petition</a>
+          <a className="footer-mailing" href="mailto:mailinglist@swarthmore9.com">Join Mailing List</a>
+        </div>
       </footer>
 
       {showTop && (
