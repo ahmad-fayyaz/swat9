@@ -1,5 +1,6 @@
 import Layout from '../Layout'
 import { useState, useEffect } from 'react'
+import ciscoKills from '../assets/cisco_kills.png'
 
 const CISCO = [
   {
@@ -49,7 +50,7 @@ export default function Cisco({ dark, setDark }) {
   }, [])
 
   function thumbFor(item) {
-    return item.thumbnail || ogImages[item.url] || null
+    return item.thumbnail || ogImages[item.url] || ciscoKills
   }
 
   return (
