@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './Layout'
 import JotFormData from './JotFormData'
+import Home from './pages/Home'
+import Action from './pages/Action'
+import Cisco from './pages/Cisco'
+import Press from './pages/Press'
 
-function Pledge() {
+function Pledge({ dark, setDark }) {
   return (
-    <Layout>
+    <Layout showPopup dark={dark} setDark={setDark}>
       <div className="masthead-wrap">
         <h1 className="masthead">
           In Defense of the Swat 9:
@@ -27,10 +32,16 @@ function Pledge() {
 }
 
 function App() {
+  const [dark, setDark] = useState(false)
+
   return (
     <Routes>
-      <Route path="/pledge" element={<Pledge />} />
-      <Route path="*" element={<Navigate to="/pledge" replace />} />
+      <Route path="/" element={<Home dark={dark} setDark={setDark} />} />
+      <Route path="/pledge" element={<Pledge dark={dark} setDark={setDark} />} />
+      <Route path="/court-support" element={<Action dark={dark} setDark={setDark} />} />
+      <Route path="/cisco" element={<Cisco dark={dark} setDark={setDark} />} />
+      <Route path="/press" element={<Press dark={dark} setDark={setDark} />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

@@ -4,6 +4,8 @@
   --fg: rgb(225, 221, 218);
   --bg: #3c0008;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: var(--bg);
   color: var(--fg);
   position: relative;
@@ -21,6 +23,115 @@ a {
 
 .prose a {
   font-weight: 700;
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  margin-top: auto;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  opacity: 0.75;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+}
+
+.footer-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+}
+
+.footer-petition {
+  font-family: "newshound", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bg);
+  background: var(--fg);
+  text-decoration: none;
+  padding: 0.3rem 0.75rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.footer-email,
+.footer-mailing {
+  color: var(--fg);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.footer-mailing-form {
+  display: flex;
+  gap: 0;
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+}
+
+.footer-mailing-input {
+  font-family: "newshound", sans-serif;
+  font-size: 0.72rem;
+  color: var(--fg);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 40%, transparent);
+  border-right: none;
+  padding: 0.3rem 0.6rem;
+  outline: none;
+  width: 160px;
+
+  &::placeholder { opacity: 0.4; }
+  &:focus { border-color: var(--fg); }
+
+  @media (max-width: 640px) {
+    flex: 1;
+    width: auto;
+  }
+}
+
+.footer-mailing-btn {
+  font-family: "newshound", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fg);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 40%, transparent);
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover { border-color: var(--fg); }
+}
+
+.footer-mailing-done {
+  font-family: "newshound", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
 }
 
 .site-header {
@@ -120,7 +231,7 @@ a {
   padding: 0.65rem 1.5rem;
 
   @media (max-width: 640px) {
-    gap: 0.25rem 1rem;
+    gap: 0.4rem 1.75rem;
     padding: 0.5rem 1rem;
   }
 }
@@ -408,6 +519,202 @@ a {
   @media (max-width: 640px) {
     bottom: 1rem;
     right: 1rem;
+  }
+}
+
+.press-list {
+  max-width: 720px;
+  margin: 2rem auto 3rem;
+  padding: 0 2rem;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.press-section {
+  margin-bottom: 2.5rem;
+}
+
+.press-category {
+  font-family: "newshound-subhead", sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  margin: 0 0 0.75rem;
+}
+
+.press-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.press-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+.press-link {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  color: var(--fg);
+  text-decoration: none;
+
+  &:hover .press-title {
+    text-decoration: underline;
+  }
+}
+
+.press-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0.9;
+
+  @media (max-width: 640px) {
+    width: 90px;
+    height: 60px;
+  }
+}
+
+.press-thumb--empty {
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.press-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.press-title {
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.4;
+
+  @media (max-width: 640px) {
+    font-size: 0.85rem;
+  }
+}
+
+.press-outlet {
+  font-family: "newshound", sans-serif;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.court-form,
+.court-thanks {
+  max-width: 720px;
+  margin: 2rem auto 3rem;
+  padding: 0 2rem;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+  }
+}
+
+.court-thanks p {
+  font-family: "newshound", sans-serif;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.court-form-label {
+  font-family: "newshound", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  margin: 0 0 0.6rem;
+}
+
+.court-dates {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.court-date-btn {
+  font-family: "newshound", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: var(--fg);
+  }
+}
+
+.court-date-btn--selected {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.court-email-row {
+  display: flex;
+  gap: 0.75rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.court-email-input {
+  font-family: "newshound", sans-serif;
+  font-size: 0.9rem;
+  color: var(--fg);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+  padding: 0.5rem 0.85rem;
+  flex: 1;
+  outline: none;
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+
+  &:focus {
+    border-color: var(--fg);
+  }
+}
+
+.court-submit-btn {
+  font-family: "newshound", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--fg);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
   }
 }
 
