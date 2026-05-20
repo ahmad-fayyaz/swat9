@@ -10,5 +10,14 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Hidden forms for Netlify detection -->
+    <form name="mailing-list" netlify="true" data-netlify="true" hidden>
+      <input type="email" name="email" />
+    </form>
+    <form name="court-support" netlify="true" data-netlify="true" hidden>
+      <input type="email" name="email" />
+      <input type="text" name="dates" />
+    </form>
   </body>
 </html>
