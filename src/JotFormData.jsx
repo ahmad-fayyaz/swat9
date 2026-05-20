@@ -18,7 +18,7 @@ const SEED_SIGNATURES = [
   { name: 'Tricia Gallagher-Geurtsen', position: 'Lecturer', org: 'University of California Santa Cruz' },
   { name: 'Matthew Vargas', position: 'Staff', org: 'Florida Agricultural and Mechanical University' },
   { name: 'Charlotte Jacobs', position: 'Adjunct Associate Professor', org: 'University of Pennsylvania' },
-  { name: 'Michael Weithorn', position: 'Adjunct Professor, MFA Screenwriting', org: 'Columbia University' },
+  { name: 'Michael Weithorn', position: 'Alumni 78, Adjunct Professor, MFA Screenwriting', org: 'Columbia University' },
   { name: 'Danielle Bobker', position: 'Professor', org: 'Concordia University' },
   { name: 'Anne Norton', position: 'Professor Emerita', org: 'University of Pennsylvania' },
   { name: 'Denis Tokmashev', position: 'Independent Researcher', org: '' },
