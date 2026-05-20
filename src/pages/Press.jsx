@@ -53,6 +53,21 @@ const PRESS = [
       },
     ],
   },
+  {
+    category: 'Alumni Support',
+    items: [
+      {
+        label: 'Letter to the Editor: Swarthmore Should At Least Be Honest About Its Values',
+        author: 'Michael Weithorn \'78',
+        url: 'https://swarthmorephoenix.com/2026/04/16/letter-to-the-editor-swarthmore-should-at-least-be-honest-about-their-values/',
+      },
+      {
+        label: 'Letter of Support for Swarthmore Pro-Palestinian Protesters',
+        author: 'Rev. Jim Colvin \'71',
+        url: 'https://www.youtube.com/live/eAPF_Q12mZE?si=rd_LwKEH1JyVK_ri',
+      },
+    ],
+  },
 ]
 
 const ALL_ITEMS = PRESS.flatMap(s => s.items)
