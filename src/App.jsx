@@ -8,7 +8,7 @@ import Press from './pages/Press'
 
 function Pledge() {
   return (
-    <Layout>
+    <Layout showPopup>
       <div className="masthead-wrap">
         <h1 className="masthead">
           In Defense of the Swat 9:

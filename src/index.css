@@ -446,6 +446,114 @@ a {
   }
 }
 
+.court-form,
+.court-thanks {
+  max-width: 720px;
+  margin: 2rem auto 3rem;
+  padding: 0 2rem;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+  }
+}
+
+.court-thanks p {
+  font-family: "newshound", sans-serif;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.court-form-label {
+  font-family: "newshound", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  margin: 0 0 0.6rem;
+}
+
+.court-dates {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.court-date-btn {
+  font-family: "newshound", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    border-color: var(--fg);
+  }
+}
+
+.court-date-btn--selected {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.court-email-row {
+  display: flex;
+  gap: 0.75rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.court-email-input {
+  font-family: "newshound", sans-serif;
+  font-size: 0.9rem;
+  color: var(--fg);
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+  padding: 0.5rem 0.85rem;
+  flex: 1;
+  outline: none;
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+
+  &:focus {
+    border-color: var(--fg);
+  }
+}
+
+.court-submit-btn {
+  font-family: "newshound", sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--fg);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+}
+
 body {
   margin: 0;
   font-family: "newshound", sans-serif;

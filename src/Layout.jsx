@@ -35,7 +35,7 @@ const NAV_LINKS = [
 
 const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
 
-export default function Layout({ children }) {
+export default function Layout({ children, showPopup: enablePopup = false }) {
   const [dark, setDark] = useState(false)
   const [showTop, setShowTop] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
@@ -61,9 +61,10 @@ export default function Layout({ children }) {
   }, [])
 
   useEffect(() => {
+    if (!enablePopup) return
     const timer = setTimeout(() => setShowPopup(true), 7000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [enablePopup])
 
   useEffect(() => {
     fetch(`https://api.jotform.com/user/forms?apiKey=${API_KEY}&limit=1&orderby=updated_at`)
