@@ -120,7 +120,7 @@ a {
   padding: 0.65rem 1.5rem;
 
   @media (max-width: 640px) {
-    gap: 0.25rem 1rem;
+    gap: 0.4rem 1.75rem;
     padding: 0.5rem 1rem;
   }
 }

@@ -26,7 +26,11 @@ function SunIcon() {
 }
 
 const NAV_LINKS = [
+  { to: '/', label: 'Home' },
   { to: '/pledge', label: 'Pledge' },
+  { to: '/court-support', label: 'Court Support' },
+  { to: '/press', label: 'Press' },
+  { to: '/cisco', label: 'Cisco' },
 ]
 
 const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
