@@ -36,12 +36,12 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home dark={dark} setDark={setDark} />} />
+      <Route path="/" element={<Navigate to="/pledge" replace />} />
       <Route path="/pledge" element={<Pledge dark={dark} setDark={setDark} />} />
       <Route path="/court-support" element={<Action dark={dark} setDark={setDark} />} />
       <Route path="/cisco" element={<Cisco dark={dark} setDark={setDark} />} />
       <Route path="/press" element={<Press dark={dark} setDark={setDark} />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<Navigate to="/pledge" replace />} />
     </Routes>
   )
 }

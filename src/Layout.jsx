@@ -26,14 +26,11 @@ function SunIcon() {
 }
 
 const NAV_LINKS = [
-  { to: '/', label: 'Home', hidden: true },
   { to: '/pledge', label: 'Pledge' },
-  { to: '/court-support', label: 'Court Support', hidden: true },
-  { to: '/press', label: 'Press', hidden: true },
-  { to: '/cisco', label: 'Cisco', hidden: true },
+  { to: '/court-support', label: 'Court Support' },
+  { to: '/press', label: 'Press' },
 ]
 
-const API_KEY = import.meta.env.VITE_JOTFORM_API_KEY
 
 function MailingListForm() {
   const [email, setEmail] = useState('')
@@ -70,7 +67,7 @@ function MailingListForm() {
 export default function Layout({ children, showPopup: enablePopup = false, dark, setDark }) {
   const [showTop, setShowTop] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
-  const [formUrl, setFormUrl] = useState('https://form.jotform.com/261336169617058')
+  const formUrl = 'https://form.jotform.com/261336169617058'
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 300)
@@ -97,15 +94,7 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
     return () => clearTimeout(timer)
   }, [enablePopup])
 
-  useEffect(() => {
-    fetch(`https://api.jotform.com/user/forms?apiKey=${API_KEY}&limit=1&orderby=updated_at`)
-      .then(r => r.json())
-      .then(json => {
-        const id = json.content?.[0]?.id
-        if (id) setFormUrl(`https://form.jotform.com/${id}`)
-      })
-      .catch(() => {})
-  }, [])
+
 
   return (
     <div className={`app ${dark ? 'theme-dark' : 'theme-light'}`}>
