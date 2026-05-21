@@ -467,11 +467,11 @@ a {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-bottom: 3rem;
+  padding-bottom: 8rem;
   pointer-events: none;
 
   @media (max-width: 640px) {
-    padding-bottom: 1.5rem;
+    padding-bottom: 10rem;
   }
 }
 
@@ -560,7 +560,7 @@ a {
   }
 
   @media (max-width: 640px) {
-    bottom: 1rem;
+    bottom: 6rem;
     right: 1rem;
   }
 }
