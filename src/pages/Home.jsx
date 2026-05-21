@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../Layout'
+import homeBanner from '../assets/home_banner.png'
 
 function TimelineItem({ entry }) {
   const boxRef = useRef(null)
@@ -111,7 +112,9 @@ export default function Home({ dark, setDark }) {
         </div>
       </div>
 
-      <div className="masthead-rule masthead-rule--single" />
+      <div className="home-banner-wrap">
+        <img src={homeBanner} alt="" className="home-banner" />
+      </div>
 
       <div className="home-timeline">
         <h2 className="masthead"><span className="masthead-sub">Timeline</span></h2>
