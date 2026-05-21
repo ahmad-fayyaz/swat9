@@ -47,7 +47,7 @@ export default function Action({ dark, setDark }) {
       <div className="prose">
         <p>
           The Swarthmore 9 will begin trial at the Delaware County Courthouse in Media, Pennsylvania
-          starting June 29th. Select the days you can attend and we'll send you a reminder with details.
+          starting June 29th. Trial will begin at 9am and the courthouse is located at 201 W Front St, Media, PA 19063. Select the days you can attend and we'll send you a reminder with details.
         </p>
       </div>
 

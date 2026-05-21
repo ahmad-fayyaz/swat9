@@ -25,13 +25,48 @@ function SunIcon() {
   )
 }
 
+const TRIAL_DATE = new Date('2026-06-29T09:00:00')
+
+function getTimeLeft() {
+  const diff = TRIAL_DATE - Date.now()
+  if (diff <= 0) return null
+  return {
+    d: Math.floor(diff / 86400000),
+    h: Math.floor((diff % 86400000) / 3600000),
+    m: Math.floor((diff % 3600000) / 60000),
+    s: Math.floor((diff % 60000) / 1000),
+  }
+}
+
+function pad(n) { return String(n).padStart(2, '0') }
+
+function Countdown() {
+  const [time, setTime] = useState(getTimeLeft)
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(getTimeLeft()), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  if (!time) return <span className="header-countdown">Trial begins today</span>
+
+  return (
+    <div className="header-countdown">
+      <span className="header-countdown-label">Time till Trial</span>
+      <span className="header-countdown-time">
+        {time.d}d {pad(time.h)}h {pad(time.m)}m
+      </span>
+    </div>
+  )
+}
+
 const NAV_LINKS = [
   { to: '/pledge', label: 'Pledge' },
   { to: '/court-support', label: 'Court Support' },
   { to: '/press', label: 'Press' },
   { to: '/cisco', label: 'Cisco' },
+  { to: '/resources', label: 'Resources' },
 ]
-
 
 function MailingListForm() {
   const [email, setEmail] = useState('')
@@ -95,8 +130,6 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
     return () => clearTimeout(timer)
   }, [enablePopup])
 
-
-
   return (
     <div className={`app ${dark ? 'theme-dark' : 'theme-light'}`}>
       <svg width="0" height="0" style={{ position: 'absolute' }}>
@@ -109,16 +142,9 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
       </svg>
 
       <header className="site-header">
-        <span className="site-name">The Swat IX</span>
+        <NavLink to="/" className="site-name" style={{ textDecoration: 'none' }}>The Swat IX</NavLink>
         <div className="header-actions">
-          <a
-            className="header-sign-btn"
-            href={formUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Sign the Pledge
-          </a>
+          <Countdown />
           <button className="theme-toggle" onClick={() => setDark(!dark)} aria-label="Toggle theme">
             {dark ? <MoonIcon /> : <SunIcon />}
           </button>
@@ -162,10 +188,8 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
 
       <footer className="site-footer">
         <a className="footer-email" href="mailto:contactus@swarthmore9.com">contactus@swarthmore9.com</a>
-        <div className="footer-actions">
-          <a className="footer-petition" href="https://actionnetwork.org/petitions/demand-swarthmore-drop-all-charges-for-student-protestors" target="_blank" rel="noopener noreferrer">Sign the Petition</a>
-          <MailingListForm />
-        </div>
+        <a className="footer-petition" href="https://actionnetwork.org/petitions/demand-swarthmore-drop-all-charges-for-student-protestors" target="_blank" rel="noopener noreferrer">Sign the Petition</a>
+        <MailingListForm />
       </footer>
 
       {showTop && (

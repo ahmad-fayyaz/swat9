@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Layout from '../Layout'
+import alumThumb from '../assets/alumThumb.png'
 
 const PRESS = [
   {
@@ -58,14 +59,21 @@ const PRESS = [
     items: [
       {
         label: 'Letter to the Editor: Swarthmore Should At Least Be Honest About Its Values',
-        author: 'Michael Weithorn \'78',
+        outlet: 'Michael Weithorn \'78',
         url: 'https://swarthmorephoenix.com/2026/04/16/letter-to-the-editor-swarthmore-should-at-least-be-honest-about-their-values/',
       },
       {
         label: 'Letter of Support for Swarthmore Pro-Palestinian Protesters',
-        author: 'Rev. Jim Colvin \'71',
+        outlet: 'Rev. Jim Colvin \'71',
         url: 'https://swarthmorevoices.com/content-1/2026/4/16/ibu4ua399q42rikwjqufb37ygzko6q',
       },
+{
+        label: 'May 4th, 2025, Alumni Statement on Encampment Arrests',
+        outlet: 'Swat Alumni for Palestine',
+        url: 'https://docs.google.com/document/d/10AnexbqHL1qDQOirZRH6xsX4ZsytUGNFpe4zgLfwuNk/edit?usp=drivesdk',
+        thumbnail: alumThumb,
+      },
+      
     ],
   },
 ]
