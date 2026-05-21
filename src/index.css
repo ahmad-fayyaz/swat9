@@ -728,6 +728,94 @@ body {
   font-weight: 400;
 }
 
+.home-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 4rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+}
+
+.home-lede {
+  font-family: "newshound", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--fg);
+  border-right: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+  padding-right: 4rem;
+
+  p { margin: 0; }
+
+  @media (max-width: 768px) {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
+    padding-bottom: 2rem;
+  }
+}
+
+.home-lede-heading {
+  text-align: left;
+}
+
+.home-lede-rule {
+  margin-bottom: 1rem;
+}
+
+.home-actions-heading {
+  font-family: "newshound-headline", sans-serif;
+  font-weight: 200;
+  font-size: 2rem;
+  margin: 0 0 1.25rem;
+  color: var(--fg);
+}
+
+.home-action-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: action-counter;
+}
+
+.home-action-item {
+  counter-increment: action-counter;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
+  padding: 0.85rem 0;
+  display: flex;
+  gap: 0.75rem;
+
+  &::before {
+    content: counter(action-counter) ".";
+    font-family: "newshound", sans-serif;
+    font-size: 0.8rem;
+    opacity: 0.4;
+    padding-top: 0.15rem;
+    flex-shrink: 0;
+  }
+}
+
+.home-action-link {
+  font-family: "newshound", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fg);
+  text-decoration: none;
+  line-height: 1.4;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 .signatures {
   padding-bottom: 4rem;
 
