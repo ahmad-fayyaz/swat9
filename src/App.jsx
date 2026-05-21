@@ -5,6 +5,7 @@ import JotFormData from './JotFormData'
 import Action from './pages/Action'
 import Cisco from './pages/Cisco'
 import Press from './pages/Press'
+import Resources from './pages/Resources'
 import Home from './pages/Home'
 
 function Pledge({ dark, setDark }) {
@@ -16,6 +17,14 @@ function Pledge({ dark, setDark }) {
           <span className="masthead-sub">CALL FOR AN ACADEMIC BOYCOTT OF SWARTHMORE COLLEGE</span>
         </h1>
         <div className="masthead-rule" />
+        <a
+          className="pledge-sign-btn"
+          href="https://form.jotform.com/261336169617058"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sign the Pledge
+        </a>
       </div>
       <div className="prose">
         <p>On May 3rd, 2025, Swarthmore College called over thirty police officers onto campus to <a href="https://www.theguardian.com/us-news/2025/may/02/swarthmore-students-suspended-pro-palestinian-camp">sweep</a> a Pro-Palestinian encampment, brutally arresting 9 peaceful protestors. The police severely injured several students in the process, as documented in contemporaneous reporting, <a href="https://swarthmorephoenix.com/2025/05/07/the-encampment-in-photos/">here.</a> Campus administrators at Swarthmore facilitated this assault <a href="https://swarthmorephoenix.com/2026/04/16/swarthmore-called-the-police-on-our-protest-now-im-preparing-for-trial/">against their students</a> and community members directly outside of an academic building. Such violence against students is unacceptable and stands in direct contradiction to the principles that make learning on a college campus possible. Swarthmore College initiated and sustained third-degree misdemeanor trespassing charges against the arrested protestors, and now over a year later they each face a potential sentence of up to one year in prison. The American Association of University Professors has long affirmed that freedom of expression, including political protest, is essential to the academic mission. Swarthmore's facilitation of criminal charges against student protesters places it in direct violation of these foundational principles.</p>
@@ -41,6 +50,7 @@ function App() {
       <Route path="/court-support" element={<Action dark={dark} setDark={setDark} />} />
       <Route path="/cisco" element={<Cisco dark={dark} setDark={setDark} />} />
       <Route path="/press" element={<Press dark={dark} setDark={setDark} />} />
+      <Route path="/resources" element={<Resources dark={dark} setDark={setDark} />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

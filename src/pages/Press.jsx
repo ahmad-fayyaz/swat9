@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Layout from '../Layout'
+import alumThumb from '../assets/alumThumb.png'
 
 const PRESS = [
   {
@@ -66,6 +67,13 @@ const PRESS = [
         outlet: 'Rev. Jim Colvin \'71',
         url: 'https://swarthmorevoices.com/content-1/2026/4/16/ibu4ua399q42rikwjqufb37ygzko6q',
       },
+{
+        label: 'May 4th, 2025, Alumni Statement on Encampment Arrests',
+        outlet: 'Swat Alumni for Palestine',
+        url: 'https://docs.google.com/document/d/10AnexbqHL1qDQOirZRH6xsX4ZsytUGNFpe4zgLfwuNk/edit?usp=drivesdk',
+        thumbnail: alumThumb,
+      },
+      
     ],
   },
 ]

@@ -10,6 +10,11 @@
   color: var(--fg);
   position: relative;
   transition: background 0.2s, color 0.2s;
+  padding-bottom: 5rem;
+
+  @media (max-width: 640px) {
+    padding-bottom: 9rem;
+  }
 }
 
 .app.theme-light {
@@ -30,29 +35,24 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  margin-top: auto;
   border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
   font-size: 0.75rem;
   letter-spacing: 0.05em;
   opacity: 0.75;
-
-  @media (max-width: 640px) {
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.25rem 1rem;
-    text-align: center;
-  }
-}
-
-.footer-actions {
-  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  z-index: 50;
   gap: 0.75rem;
-  align-items: center;
 
   @media (max-width: 640px) {
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 0.5rem 0.75rem;
+    padding: 0.75rem 1rem;
   }
 }
 
@@ -87,6 +87,7 @@ a {
   gap: 0;
 
   @media (max-width: 640px) {
+    grid-column: 1 / -1;
     width: 100%;
   }
 }
@@ -157,6 +158,44 @@ a {
   @media (max-width: 640px) {
     position: static;
     gap: 0.5rem;
+  }
+}
+
+.header-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 1px solid color-mix(in srgb, var(--fg) 35%, transparent);
+  padding: 0.3rem 1.25rem;
+  gap: 0.1rem;
+
+  @media (max-width: 640px) {
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+.header-countdown-label {
+  font-family: "newshound-subhead", sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+
+  @media (max-width: 640px) {
+    font-size: 0.5rem;
+  }
+}
+
+.header-countdown-time {
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  @media (max-width: 640px) {
+    font-size: 0.6rem;
   }
 }
 
@@ -292,7 +331,7 @@ a {
   }
 
   @media (max-width: 640px) {
-    font-size: 1.5rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -728,6 +767,122 @@ body {
   font-weight: 400;
 }
 
+.pledge-sign-btn {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--fg);
+  padding: 0.85rem 3rem;
+  text-decoration: none;
+  margin-top: 1.25rem;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
+}
+
+.resources-wrap {
+  max-width: 720px;
+  margin: 2rem auto 3rem;
+  padding: 0 2rem;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+    margin-top: 1.25rem;
+  }
+}
+
+.resources-section {
+  margin-bottom: 2.5rem;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--fg) 55%, transparent);
+  margin-bottom: 0.6rem;
+  filter: url(#newsprint-grain);
+  box-shadow: 0 4px 18px rgba(160, 0, 20, 0.35);
+}
+
+.contact-name {
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--fg);
+}
+
+.contact-details {
+  font-family: "newshound", sans-serif;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  color: var(--fg);
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
+
+.contact-sep {
+  opacity: 0.4;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resource-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+.resource-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: var(--fg);
+  text-decoration: none;
+
+  &:hover .resource-title { text-decoration: underline; }
+}
+
+.resource-title {
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.resource-note {
+  font-family: "newshound", sans-serif;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
 .home-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -770,6 +925,173 @@ body {
   margin-bottom: 1rem;
 }
 
+.home-timeline {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem 2rem 0;
+
+  @media (max-width: 640px) {
+    padding: 2rem 1rem 0;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.home-timeline > .masthead {
+  margin-bottom: 3rem;
+}
+
+.timeline-track {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: color-mix(in srgb, var(--fg) 25%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    &::before {
+      left: 0.75rem;
+      transform: none;
+    }
+  }
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 2rem 1fr;
+  padding-bottom: 2.5rem;
+  position: relative;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1.5rem 1fr;
+  }
+}
+
+.timeline-item--left .timeline-dot-col {
+  grid-column: 2;
+  grid-row: 1;
+
+  @media (max-width: 640px) {
+    grid-column: 1;
+  }
+}
+
+.timeline-item--left .timeline-content {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: right;
+  padding-right: 1.5rem;
+
+  @media (max-width: 640px) {
+    grid-column: 2;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+}
+
+.timeline-item--right .timeline-dot-col {
+  grid-column: 2;
+  grid-row: 1;
+
+  @media (max-width: 640px) {
+    grid-column: 1;
+  }
+}
+
+.timeline-item--right .timeline-content {
+  grid-column: 3;
+  grid-row: 1;
+  padding-left: 1.5rem;
+
+  @media (max-width: 640px) {
+    grid-column: 2;
+    padding-left: 1rem;
+  }
+}
+
+.timeline-content {
+  border: 1px solid color-mix(in srgb, var(--fg) 55%, transparent);
+  padding: 0.75rem 1rem;
+  filter: url(#newsprint-grain);
+  box-shadow: 0 4px 18px rgba(160, 0, 20, 0.35);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-content.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item--future {
+  opacity: 0.55;
+}
+
+.timeline-dot-col {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 0.35rem;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--fg);
+  flex-shrink: 0;
+
+  .timeline-item--future & {
+    background: none;
+    border: 1px solid var(--fg);
+  }
+}
+
+.timeline-date {
+  font-family: "newshound-subhead", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  margin: 0 0 0.3rem;
+}
+
+.timeline-text {
+  font-family: "newshound", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.timeline-now-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.timeline-now {
+  padding: 0.4rem 1.25rem;
+  font-family: "newshound", sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bg);
+  background: var(--fg);
+}
+
 .home-actions-heading {
   font-family: "newshound-headline", sans-serif;
   font-weight: 200;
@@ -781,16 +1103,19 @@ body {
 .home-action-list {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 1.25rem 0 0;
   counter-reset: action-counter;
 }
 
 .home-action-item {
   counter-increment: action-counter;
-  border-bottom: 1px solid color-mix(in srgb, var(--fg) 15%, transparent);
-  padding: 0.85rem 0;
+  border: 1px solid color-mix(in srgb, var(--fg) 55%, transparent);
+  padding: 0.85rem 0.75rem;
   display: flex;
   gap: 0.75rem;
+  margin-bottom: 0.6rem;
+  filter: url(#newsprint-grain);
+  box-shadow: 0 4px 18px rgba(160, 0, 20, 0.35);
 
   &::before {
     content: counter(action-counter) ".";
