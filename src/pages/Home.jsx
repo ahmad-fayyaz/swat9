@@ -44,6 +44,10 @@ const ACTIONS = [
     text: "Join Swarthmore SJP's call for Swarthmore to Drop Cisco",
     to: '/cisco',
   },
+  {
+    text: "Sign up to show up in court and support the Swarthmore 9",
+    to: '/court-support',
+  },
 ]
 
 const TIMELINE = [
@@ -89,6 +93,8 @@ export default function Home({ dark, setDark }) {
   return (
     <Layout dark={dark} setDark={setDark}>
       <div className="home-split">
+
+
         <div className="home-lede">
           <h1 className="masthead home-lede-heading">On June 29,</h1>
           <p>The "Swarthmore 9" are slated to begin trial for third-degree misdemeanor trespassing charges initiated by Swarthmore College and pursued by Delaware County DA Tanner Rouse. After being violently arrested by over 30 police officers at a pro-Palestine encampment launched by Swarthmore SJP, the 9 protestors are facing criminal charges which carry a maximum sentence of up to a year in prison. The Hossam Shabat Liberated Zone was launched in honor of martyred Palestinian journalist Hossam Shabbat, who was assassinated by Israel on March 24, 2025. It called on Swarthmore to drop all ties with Cisco Systems, a primary BDS target for their complicity in the ongoing genocide in Gaza. Instead of negotiating with protestors, President Valerie Smith and Swarthmore college chose brute force. Now, we need your help to free the Swarthmore 9.</p>
