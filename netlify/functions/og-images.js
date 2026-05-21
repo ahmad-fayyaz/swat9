@@ -20,5 +20,7 @@ export default async function handler(req) {
     })
   )
 
-  return Response.json(Object.fromEntries(results))
+  return Response.json(Object.fromEntries(results), {
+    headers: { 'Cache-Control': 'public, max-age=86400, s-maxage=86400' },
+  })
 }

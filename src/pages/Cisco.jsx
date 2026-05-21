@@ -33,6 +33,7 @@ const CISCO = [
         label: 'Workers at the tech giant Cisco say they’ve been harassed and silenced for fighting the company’s ties to Israel and advocating for Palestinian rights.',
         outlet: 'Al Jazeera',
         url: 'https://www.instagram.com/reels/DG35nj8MVtM/',
+        thumbnail: ciscoKills
       },
     ],
   },
