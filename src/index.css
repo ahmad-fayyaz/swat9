@@ -334,6 +334,10 @@ a {
   filter: url(#newsprint-grain);
 }
 
+.masthead-rule--single {
+  box-shadow: none;
+}
+
 .signatures {
   max-width: 720px;
   margin: 2.5rem auto 3rem;

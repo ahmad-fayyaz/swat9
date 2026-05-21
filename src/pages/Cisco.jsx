@@ -1,6 +1,9 @@
 import Layout from '../Layout'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ciscoKills from '../assets/cisco_kills.png'
+import ciscoBanner from '../assets/cisco_banner.png'
+
+
 
 const CISCO = [
   {
@@ -40,6 +43,25 @@ const ARTICLE_URLS = ALL_ITEMS.filter(i => !i.thumbnail).map(i => i.url)
 
 export default function Cisco({ dark, setDark }) {
   const [ogImages, setOgImages] = useState({})
+  const headlineRef = useRef(null)
+  const [headlineWidth, setHeadlineWidth] = useState(null)
+
+  useEffect(() => {
+    const prev = dark
+    setDark(true)
+    return () => setDark(prev)
+  }, [])
+
+  useEffect(() => {
+    if (!headlineRef.current) return
+    const measure = () => {
+      if (headlineRef.current) setHeadlineWidth(headlineRef.current.offsetWidth)
+    }
+    document.fonts.ready.then(measure)
+    const obs = new ResizeObserver(measure)
+    obs.observe(headlineRef.current)
+    return () => obs.disconnect()
+  }, [])
 
   useEffect(() => {
     if (!ARTICLE_URLS.length) return
@@ -56,14 +78,15 @@ export default function Cisco({ dark, setDark }) {
   return (
     <Layout dark={dark} setDark={setDark}>
       <div className="masthead-wrap">
-        <h1 className="masthead">
-          Drop Cisco
-          <span className="masthead-sub">The Swarthmore 9 were arrested for <a href="https://www.instagram.com/p/DJE_mhtutSq/">demanding</a> Swarthmore College divest from Cisco. Learn here about Cisco's complicity in genocide. </span>
+        <h1 ref={headlineRef} className="masthead" style={{ fontSize: 'clamp(2rem, 9vw, 7rem)' }}>
+          The Swarthmore 9 Were Arrested
         </h1>
-        <div className="masthead-rule" />
+        <div className="masthead-rule masthead-rule--single" />
+        <p className="masthead-sub" style={{ fontSize: 'clamp(1.2rem, 4vw, 3rem)', width: '100%', textAlign: 'justify', textAlignLast: 'justify' }}>FOR <a href="https://www.instagram.com/p/DJE_mhtutSq/">DEMANDING</a> SWARTHMORE COLLEGE TO DIVEST FROM CISCO.</p>
+        <img src={ciscoBanner} alt="" style={{ display: 'block', width: headlineWidth ? `${headlineWidth}px` : 0, marginTop: '2rem' }} />
       </div>
 
-             <div className="press-list">
+      <div className="press-list">
          {CISCO.map(({ category, items }) => (
           <div key={category} className="press-section">
             <h2 className="press-category">{category}</h2>
