@@ -38,7 +38,6 @@ a {
   border-top: 1px solid color-mix(in srgb, var(--fg) 20%, transparent);
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  opacity: 0.75;
   position: fixed;
   bottom: 0;
   left: 0;
