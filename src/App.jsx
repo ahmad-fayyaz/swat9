@@ -5,6 +5,7 @@ import JotFormData from './JotFormData'
 import Action from './pages/Action'
 import Cisco from './pages/Cisco'
 import Press from './pages/Press'
+import Home from './pages/Home'
 
 function Pledge({ dark, setDark }) {
   return (
@@ -35,12 +36,12 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/pledge" replace />} />
+      <Route path="/" element={<Home dark={dark} setDark={setDark} />} />
       <Route path="/pledge" element={<Pledge dark={dark} setDark={setDark} />} />
       <Route path="/court-support" element={<Action dark={dark} setDark={setDark} />} />
       <Route path="/cisco" element={<Cisco dark={dark} setDark={setDark} />} />
       <Route path="/press" element={<Press dark={dark} setDark={setDark} />} />
-      <Route path="*" element={<Navigate to="/pledge" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

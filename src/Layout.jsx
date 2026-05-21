@@ -109,7 +109,7 @@ export default function Layout({ children, showPopup: enablePopup = false, dark,
       </svg>
 
       <header className="site-header">
-        <span className="site-name">The Swat IX</span>
+        <NavLink to="/" className="site-name" style={{ textDecoration: 'none' }}>The Swat IX</NavLink>
         <div className="header-actions">
           <a
             className="header-sign-btn"
