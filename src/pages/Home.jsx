@@ -102,6 +102,7 @@ export default function Home({ dark, setDark }) {
         </div>
         <div className="home-actions">
           <h2 className="masthead home-lede-heading"><span className="masthead-sub">WHAT TO DO?</span></h2>
+          <p className="home-actions-hint">Click any item to learn more</p>
           <ol className="home-action-list">
             {ACTIONS.map(({ text, to }) => (
               <li key={to} className="home-action-item">

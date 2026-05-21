@@ -1107,6 +1107,15 @@ body {
   background: var(--fg);
 }
 
+.home-actions-hint {
+  font-family: "newshound", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.45;
+  margin: 0 0 0.75rem;
+}
+
 .home-actions-heading {
   font-family: "newshound-headline", sans-serif;
   font-weight: 200;
