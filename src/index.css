@@ -883,6 +883,22 @@ body {
   opacity: 0.5;
 }
 
+.home-banner-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    padding: 0 1rem;
+  }
+}
+
+.home-banner {
+  width: 100%;
+  display: block;
+}
+
 .home-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
