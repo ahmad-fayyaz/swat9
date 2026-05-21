@@ -58,12 +58,12 @@ const PRESS = [
     items: [
       {
         label: 'Letter to the Editor: Swarthmore Should At Least Be Honest About Its Values',
-        author: 'Michael Weithorn \'78',
+        outlet: 'Michael Weithorn \'78',
         url: 'https://swarthmorephoenix.com/2026/04/16/letter-to-the-editor-swarthmore-should-at-least-be-honest-about-their-values/',
       },
       {
         label: 'Letter of Support for Swarthmore Pro-Palestinian Protesters',
-        author: 'Rev. Jim Colvin \'71',
+        outlet: 'Rev. Jim Colvin \'71',
         url: 'https://swarthmorevoices.com/content-1/2026/4/16/ibu4ua399q42rikwjqufb37ygzko6q',
       },
     ],
