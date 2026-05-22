@@ -32,7 +32,7 @@ const PRESS = [
         url: 'https://swarthmorephoenix.com/2026/04/23/sgo-resolution-urging-the-dismissal-of-trespassing-charges/',
       },
       {
-        label: 'Faculty and alum on the erosion of free protest at Swarthmore',
+        label: 'Faculty on the erosion of free speech at Swarthmore',
         outlet: 'The Swarthmore Phoenix',
         url: 'https://swarthmorephoenix.com/2026/04/30/faculty-and-alum-on-the-erosion-of-free-protest-at-swarthmore/',
       },
