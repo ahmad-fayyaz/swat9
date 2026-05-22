@@ -42,7 +42,7 @@ const ACTIONS = [
     to: '/press',
   },
   {
-    text: "Join Swarthmore SJP's call for Swarthmore to Drop Cisco",
+    text: "Join Swarthmore SJP's call for Swarthmore College to Drop Cisco",
     to: '/cisco',
   },
   {
