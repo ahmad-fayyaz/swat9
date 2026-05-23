@@ -16,6 +16,16 @@ const PRESS = [
         outlet: 'DelCo Rising',
         url: 'https://delcorising.substack.com/p/swarthmore-9-defendant-jace-boland',
       },
+{
+        label: 'Swarthmore 9 defendant Jace Boland speaks out',
+        outlet: 'DelCo Rising',
+        url: 'https://delcorising.substack.com/p/swarthmore-9-defendant-jace-boland',
+      },
+      {
+        label: 'Swarthmore student set to face trial over anti-genocide protests',
+        outlet: '2 Be Determined',
+        url: 'https://www.2bedetermined.co/news/swarthmore-student-set-to-face-trial-over-anti-genocide-protests',
+      }
     ],
   },
   {
