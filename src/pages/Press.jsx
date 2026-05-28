@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Layout from '../Layout'
 import alumThumb from '../assets/alumThumb.png'
+import abSchoolThumbnail from '../assets/abSchoolThumbnail.png'
 
 const PRESS = [
   {
@@ -56,6 +57,12 @@ const PRESS = [
         outlet: 'Millennials Are Killing Capitalism',
         url: 'https://www.youtube.com/live/eAPF_Q12mZE?si=rd_LwKEH1JyVK_ri',
         thumbnail: 'https://img.youtube.com/vi/eAPF_Q12mZE/maxresdefault.jpg',
+      },
+      {
+        label: 'Support the Swarthmore 9!',
+        outlet: 'W.E.B. Du Bois Movement School for Abolition & Reconstruction',
+        url: 'https://www.instagram.com/reel/DY4dTocJ8bQ/',
+        thumbnail: abSchoolThumbnail,
       },
     ],
   },
