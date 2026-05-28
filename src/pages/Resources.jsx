@@ -13,7 +13,7 @@ const CONTACTS = [
   },
   {
     name: 'VP of Student Affairs Stephanie Ives',
-    phone: '610-328-83654',
+    phone: '610-328-8365',
     email: 'sives1@swarthmore.edu',
   },
 ]
